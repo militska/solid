@@ -29,11 +29,11 @@ class vFor
      */
     public function render($obj)
     {
-        if (class_exists($obj::class)) {
+        if (!class_exists($obj::class)) {
             throw new NotFoundClassException();
         }
 
-        if ($obj::class instanceof IRender) {
+        if (!($obj::class instanceof IRender)) {
             throw new IncorrectInterfaceException();
         }
 
