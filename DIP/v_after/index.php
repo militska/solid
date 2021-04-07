@@ -9,10 +9,6 @@ class NotFoundClassException extends Exception
 {
 }
 
-class IncorrectInterfaceException extends Exception
-{
-}
-
 /**
  * Таска после
  *
@@ -22,33 +18,35 @@ class vFor
 {
 
     /**
-     * @param $obj
-     * @return string
-     * @throws IncorrectInterfaceException
-     * @throws NotFoundClassException
+     * @param $type
+     * @return Complaint|Order|Ticket
+     * @throws Exception
      */
-    public function render($obj)
+    public static function create($type) :IRender
     {
-        if (!class_exists($obj::class)) {
-            throw new NotFoundClassException();
+        if ($type === 'order') {
+            return new Order();
+        }
+        if ($type === 'complaint') {
+            return new Complaint();
         }
 
-        if (!($obj::class instanceof IRender)) {
-            throw new IncorrectInterfaceException();
+        if ($type === 'ticket') {
+            return new Ticket();
         }
 
-        return $obj->render();
+        throw new NotFoundClassException();
     }
 
 }
 
 class Executor
 {
-
     public function execute()
     {
-        $ticket = new Ticket(1);
+        $id = 3;
+        $object = vFor::create('order');
         $renderClass = new vFor();
-        echo $renderClass->render($ticket);
+        echo $object->render($id);
     }
 }

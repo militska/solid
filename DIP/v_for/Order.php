@@ -1,10 +1,10 @@
 <?php
 
 
-class Order implements IRender
+class Order
 {
 
-    public function render($id)
+    public function renderOrder($id)
     {
         $order = (new StdClass())->findOrder($id);
         $data = $order->id . ' ' . $order->fio;

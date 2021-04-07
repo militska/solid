@@ -1,10 +1,10 @@
 <?php
 
 
-class Ticket implements IRender
+class Ticket
 {
 
-    public function render($id)
+    public function getTiketById($id)
     {
         $newData = '';
         $ticket = (new StdClass())->findTicket($id);
