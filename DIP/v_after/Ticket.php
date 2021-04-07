@@ -5,9 +5,9 @@ class Ticket implements IRender
 {
     private $id;
 
-    public function __construct($id)
+    public function create()
     {
-        $this->id = $id;
+        $this->id = uniqid();
     }
 
     public function render()
