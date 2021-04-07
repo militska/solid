@@ -2,8 +2,5 @@
 
 interface IRender
 {
-
-    public function create()
-    ;
-    public function render();
+    public function render($id);
 }

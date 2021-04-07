@@ -22,7 +22,7 @@ class vFor
      * @return Complaint|Order|Ticket
      * @throws Exception
      */
-    public static function create($type)
+    public static function create($type) :IRender
     {
         if ($type === 'order') {
             return new Order();
@@ -44,8 +44,9 @@ class Executor
 {
     public function execute()
     {
+        $id = 3;
         $object = vFor::create('order');
         $renderClass = new vFor();
-        echo $object->render();
+        echo $object->render($id);
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-class Complaint implements IRender
+class Complaint
 {
 
     /**
      * @return string
      */
-    public function render($id)
+    public function getComplaint($id)
     {
         $complaint = (new StdClass())->findComplaint($id);
         $data = $complaint->id . ' ' . $complaint->text;
